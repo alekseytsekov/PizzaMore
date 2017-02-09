@@ -4,7 +4,7 @@
 
     public class CookieCollection : ICookieCollection
     {
-        private IDictionary<string,Cookie> _cookieCollection;
+        private readonly IDictionary<string,Cookie> _cookieCollection;
 
         public CookieCollection()
         {

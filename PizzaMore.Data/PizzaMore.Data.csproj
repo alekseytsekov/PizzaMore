@@ -51,6 +51,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\Pizza.cs" />
+    <Compile Include="Models\Session.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="PizzaMoreContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
