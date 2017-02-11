@@ -15,7 +15,8 @@ namespace PizzaMore.Data
         public PizzaMoreContext()
             : base("name=PizzaMoreContext")
         {
-            
+            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<PizzaMoreContext, Configuration>());
+            Database.SetInitializer<PizzaMoreContext>(new CreateDatabaseIfNotExists<PizzaMoreContext>());
         }
         
         // public virtual DbSet<MyEntity> MyEntities { get; set; }

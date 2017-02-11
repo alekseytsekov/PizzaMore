@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
     using System.Net;
     using PizzaMore.Data;
@@ -103,6 +104,13 @@
             return session;
         }
 
+        public static void PrintFileContent(string path)
+        {
+            var content = File.ReadAllText(path);
+
+            Console.WriteLine(content);
+        }
+
         private static IDictionary<string, string> RetrieveRequestParameters(string queryString)
         {
             if (string.IsNullOrWhiteSpace(queryString))
@@ -110,7 +118,7 @@
                 return null;
             }
 
-            var result = new Dictionary<string,string>();
+            var result = new Dictionary<string, string>();
 
             queryString = WebUtility.UrlDecode(queryString);
 
@@ -120,7 +128,14 @@
             {
                 var splitted = keyValuePair.Split('=');
 
-                result.Add(splitted[0], splitted[1]);
+                string value = null;
+
+                if (splitted.Length > 1)
+                {
+                    value = splitted[1];
+                }
+
+                result.Add(splitted[0], value );
             }
 
             return result;

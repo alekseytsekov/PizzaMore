@@ -11,16 +11,19 @@
         {
             this._pizzas = new List<Pizza>();
         }
-
+        [Key]
         public int Id { get; set; }
 
         [Required]
-        [EmailAddress]
         public string Email { get; set; }
 
         [Required]
-        [MinLength(4)]
-        public string Password { get; set; }
+        public string Salt { get; set; }
+
+        [Required]
+        public string Hash { get; set; }
+
+        public string RequestParams { get; set; }
 
         public virtual ICollection<Pizza> Pizzas
         {

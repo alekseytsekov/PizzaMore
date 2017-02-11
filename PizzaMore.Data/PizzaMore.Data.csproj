@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\build\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -40,6 +40,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -51,6 +52,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\201702112230177_InitialCreate.cs" />
+    <Compile Include="Migrations\201702112230177_InitialCreate.Designer.cs">
+      <DependentUpon>201702112230177_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702112239127_DbInit.cs" />
+    <Compile Include="Migrations\201702112239127_DbInit.Designer.cs">
+      <DependentUpon>201702112239127_DbInit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702112245031_AddUserTestField.cs" />
+    <Compile Include="Migrations\201702112245031_AddUserTestField.Designer.cs">
+      <DependentUpon>201702112245031_AddUserTestField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Pizza.cs" />
     <Compile Include="Models\Session.cs" />
@@ -61,6 +75,17 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201702112230177_InitialCreate.resx">
+      <DependentUpon>201702112230177_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702112239127_DbInit.resx">
+      <DependentUpon>201702112239127_DbInit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702112245031_AddUserTestField.resx">
+      <DependentUpon>201702112245031_AddUserTestField.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
