@@ -9,6 +9,7 @@
     public class StartUp
     {
         private const string DefaultPagePath = "../www/PizzaMore/SignUp.html";
+        private const string DefaultHomePAge = "../www/PizzaMore/Home.html";
         private const string DefaultIncorrectParamsPath = "../www/PizzaMore/404.html";
         private static IDictionary<string, string> _requestParameters = new Dictionary<string, string>();
         public static Header Header = new Header();
@@ -22,12 +23,7 @@
             else if (WebUtil.IsPost())
             {
                 _requestParameters = WebUtil.RetrievePostParameters();
-
-                //var paramsa = new Dictionary<string, string>();
-                //paramsa.Add("email", "kokoto@abv.bg");
-                //paramsa.Add("password", "kokoto123");
-                //_requestParameters = paramsa;
-
+                
                 var user = TryCreateUser(_requestParameters);
 
                 if (user == null)
@@ -37,24 +33,8 @@
 
                 AddUserToDb(user);
 
-                Header.Print();
-                WebUtil.PrintFileContent("../www/PizzaMore/Home.html");
+                ShowPage(DefaultHomePAge);
             }
-
-            //var paramsa = new Dictionary<string, string>();
-
-            //paramsa.Add("email", "koko1@abv.bg");
-            //paramsa.Add("password", "koko123");
-
-
-            //var user = TryCreateUser(paramsa);
-
-            //if (user == null)
-            //{
-            //    //ShowPage(DefaultIncorrectParamsPath);
-            //}
-
-            //AddUserToDb(user);
         }
 
         private static void AddUserToDb(User user)
@@ -102,7 +82,7 @@
 
         private static bool ValidateInput(IDictionary<string, string> parameters)
         {
-            if (!parameters.ContainsKey("email") && !parameters.ContainsKey("password"))
+            if (!parameters.ContainsKey("email") || !parameters.ContainsKey("password"))
             {
                 return false;
             }
@@ -116,12 +96,12 @@
 
         private static bool CheckConstraints(string email, string password)
         {
-            if (string.IsNullOrEmpty(email) && email.Length < 5)
+            if (string.IsNullOrEmpty(email) || email.Length < 5)
             {
                 return false;
             }
 
-            if (string.IsNullOrEmpty(password) && password.Length < 4)
+            if (string.IsNullOrEmpty(password) || password.Length < 4)
             {
                 return false;
             }
