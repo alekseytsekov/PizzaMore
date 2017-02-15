@@ -72,7 +72,7 @@
 
             user.Pizzas.Remove(pizza);
             db.Pizzas.Remove(pizza);
-
+            
             db.Users.AddOrUpdate(user);
             db.SaveChanges();
         }
