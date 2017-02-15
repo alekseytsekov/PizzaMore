@@ -119,7 +119,7 @@
                 Console.WriteLine($"<img class=\"card-img-top\" src=\"{pizza.ImgUrl}\" width=\"200px\"alt=\"Card image cap\">");
                 Console.WriteLine("<div class=\"card-block\">");
                 Console.WriteLine($"<h4 class=\"card-title\">{pizza.Title}</h4>");
-                Console.WriteLine($"<p class=\"card-text\"><a href=\"DetailsPizza.exe?pizzaid={pizza.Id}\">Recipe</a></p>");
+                Console.WriteLine($"<p class=\"card-text\"><a href=\"PizzaMore.DetailsPizza.exe?pizzaid={pizza.Id}\">Recipe</a></p>");
                 Console.WriteLine("<form method=\"POST\">");
                 Console.WriteLine($"<div class=\"radio\"><label><input type = \"radio\" name=\"pizzaVote\" value=\"up\">Up</label></div>");
                 Console.WriteLine($"<div class=\"radio\"><label><input type = \"radio\" name=\"pizzaVote\" value=\"down\">Down</label></div>");
@@ -142,8 +142,8 @@
                 "</div>" +
                 "<div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">" +
                 "<ul class=\"nav navbar-nav\">" +
-                "<li ><a href=\"AddPizza.exe\">Suggest Pizza</a></li>" +
-                "<li><a href=\"YourSuggestions.exe\">Your Suggestions</a></li>" +
+                "<li ><a href=\"PizzaMore.AddPizza.exe\">Suggest Pizza</a></li>" +
+                "<li><a href=\"PizzaMore.YourSuggestions.exe\">Your Suggestions</a></li>" +
                 "</ul>" +
                 "<ul class=\"nav navbar-nav navbar-right\">" +
                 "<p class=\"navbar-text navbar-right\"></p>" +

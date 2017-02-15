@@ -23,7 +23,7 @@
             if (WebUtil.IsGet())
             {
                 _requestParameters = WebUtil.RetrieveGetParameters();
-                TryLogOut(_requestParameters);
+                //TryLogOut(_requestParameters);
             }
             else if (WebUtil.IsPost())
             {

@@ -96,7 +96,7 @@
             {
                 Console.WriteLine("<form method=\"POST\">");
                 Console.WriteLine($"<li>" +
-                                  $"<a href=\"DetailsPizza.exe?pizzaid={pizzas.Id}\">{pizzas.Title}</a> " +
+                                  $"<a href=\"PizzaMore.DetailsPizza.exe?pizzaid={pizzas.Id}\">{pizzas.Title}</a> " +
                                   $"<input type=\"hidden\" name=\"pizzaId\" value=\"{pizzas.Id}\"/>" +
                                   $" <input type=\"submit\" class=\"btn btn-sm btn-danger\" value=\"X\"/>" +
                                   $"</li>");
