@@ -111,6 +111,12 @@
             Console.WriteLine(content);
         }
 
+        public static void PageNotAllowed()
+        {
+            PrintFileContent("../www/PizzaMore/game/index.html");
+        }
+
+
         private static IDictionary<string, string> RetrieveRequestParameters(string queryString)
         {
             if (string.IsNullOrWhiteSpace(queryString))

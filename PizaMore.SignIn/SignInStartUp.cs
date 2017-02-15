@@ -11,7 +11,7 @@
     class SignInStartUp
     {
         private const string DefaultPagePath = "../www/PizzaMore/SignIn.html";
-        private const string DefaultHomePage = "../www/PizzaMore/Home.html";
+        private const string DefaultHomePage = "../www/PizzaMore/Menu.html";
         private const string DefaultIncorrectParamsPath = "../www/PizzaMore/404.html";
         private static IDictionary<string, string> _requestParameters = new Dictionary<string, string>();
         public static Header Header = new Header();
