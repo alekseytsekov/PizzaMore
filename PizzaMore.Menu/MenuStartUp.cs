@@ -1,6 +1,9 @@
 ﻿namespace PizzaMore.Menu
 {
     using System;
+    using System.Collections.Generic;
+    using System.Data.Entity.Migrations;
+    using System.Linq;
     using PizzaMore.Data;
     using PizzaMore.Data.Models;
     using PizzaMore.Utility;
@@ -14,6 +17,7 @@
 
         public static Header Header = new Header();
         public static Session Session;
+        private static IDictionary<string, string> requestParameters = new Dictionary<string, string>();
         static void Main()
         {
             Session = WebUtil.GetSession();
@@ -30,12 +34,62 @@
             }
             else if (WebUtil.IsPost())
             {
+                requestParameters = WebUtil.RetrievePostParameters();
+                VoteForPizza(requestParameters);
                 ShowPage();
             }
             else
             {
                 ShowErrorPage(DefaultIncorrectParamsPath);
             }
+        }
+
+        private static void VoteForPizza(IDictionary<string, string> requestParameters)
+        {
+            if (!requestParameters.ContainsKey("pizzaVote") || !requestParameters.ContainsKey("pizzaid"))
+            {
+                return;
+            }
+
+            var vote = requestParameters["pizzaVote"];
+
+            if (vote != "up" && vote != "down")
+            {
+                return;
+            }
+
+            var pizzaId = requestParameters["pizzaid"];
+
+            int id;
+
+            if (!int.TryParse(pizzaId, out id))
+            {
+                return;
+            }
+
+            
+
+            var db = new PizzaMoreContext();
+
+            var pizza = db.Pizzas.FirstOrDefault(x => x.Id == id);
+
+            if (pizza == null)
+            {
+                return;
+            }
+
+            if (vote == "up")
+            {
+                pizza.UpVotes++;
+            }
+            else
+            {
+                pizza.DownVotes--;
+            }
+
+            db.Pizzas.AddOrUpdate(pizza);
+
+            db.SaveChanges();
         }
 
         private static void ShowPage()

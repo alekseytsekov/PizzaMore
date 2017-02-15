@@ -74,6 +74,8 @@
 
             db.Users.AddOrUpdate(session.User);
 
+            db.SaveChanges();
+
             return true;
         }
 
