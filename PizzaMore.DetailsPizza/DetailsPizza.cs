@@ -7,7 +7,7 @@
     using PizzaMore.Data.Models;
     using PizzaMore.Utility;
 
-    class Program
+    class DetailsPizza
     {
         public static Header Header = new Header();
         private static IDictionary<string, string> requestParameters = new Dictionary<string, string>();

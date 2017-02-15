@@ -5,6 +5,7 @@
     using PizzaMore.Data.Models;
     using PizzaMore.Utility;
     using System.Linq;
+    using PizzaMore.Data;
 
     internal class StartUp
     {
@@ -22,6 +23,7 @@
             if (WebUtil.IsGet())
             {
                 _requestParameters = WebUtil.RetrieveGetParameters();
+                TryLogOut(_requestParameters);
             }
             else if (WebUtil.IsPost())
             {
@@ -36,6 +38,31 @@
             SetLanguage();
 
             ShowPage();
+        }
+
+        private static void TryLogOut(IDictionary<string, string> requestParameters)
+        {
+            if (!requestParameters.ContainsKey("logout"))
+            {
+                return;
+            }
+
+            var value = requestParameters["logout"];
+
+            if (value != "true")
+            {
+                return;
+            }
+
+            var db = new PizzaMoreContext();
+
+            Session = WebUtil.GetSession();
+
+            var currentSession = db.Sessions.FirstOrDefault(x => x.Id == Session.Id);
+
+            db.Sessions.Remove(currentSession);
+
+            db.SaveChanges();
         }
 
         private static void AddDefaultLanguageCookie()
